@@ -23,7 +23,8 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-
+#include "Ship.h"
+#include "Laser.h"
 class Game
 {
 public:
@@ -42,5 +43,10 @@ private:
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
+	Ship ship;
+	Laser lasers[1000];
+	int laserIndex = -1;
+	int fireCounter = 0;
+	int fireCounterLimit = 30;
 	/********************************/
 };

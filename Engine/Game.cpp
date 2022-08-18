@@ -24,7 +24,8 @@
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
-	gfx( wnd )
+	gfx( wnd ),
+	ship(10,10)
 {
 }
 
@@ -38,8 +39,35 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	ship.ProcessMovement(wnd,gfx);
+	ship.ClampScreen(gfx);
+	fireCounter++;
+	
+	if (wnd.kbd.KeyIsPressed(VK_SPACE))
+	{
+		laserIndex++;
+		if (fireCounter > fireCounterLimit)
+		{
+			lasers[laserIndex].Init(
+				ship.GetX() + ship.GetWidth(),
+				gfx.ScreenWidth,
+				ship.GetY() + ship.GetHeight() / 2 - 1,
+				ship.GetY() + ship.GetHeight() / 2 + 1);
+			fireCounter = 0;
+		}
+		lasers[laserIndex].SetIsFired(true);
+	}
+
+	for (int t = 0; t <= laserIndex; ++t)
+	{
+		if (lasers[t].GetIsFired())
+		{
+			lasers[t].Fire(gfx);
+		}
+	}
 }
 
 void Game::ComposeFrame()
 {
+	gfx.DrawShip(ship.GetX(),ship.GetY());
 }
