@@ -60,8 +60,10 @@ public:
 	void DrawShip(int x, int y);
 	void DrawGameOver(int x, int y);
 	void DrawStartGame(int x, int y);
+	void DrawSpace();
 	~Graphics();
 private:
+	int solution = 0;
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;
 	Microsoft::WRL::ComPtr<ID3D11Device>				pDevice;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext>			pImmediateContext;

@@ -72,31 +72,36 @@ void Game::UpdateModel()
 			rocks[rockIndex].Move();
 
 			// Making the existing speeder move left
-			speeders[speederIndex].Move();
+			if (speederIndex != -1)
+			{
+				speeders[speederIndex].Move();
+			}
 
 			// Checking if the speeder is colliding with the ship
 			// and increasing the fire rate
-			if (speeders[speederIndex].GetShipColission())
+			if (speeders[speederIndex].GetShipColission() && speederAmmo > 0)
 			{
-				fireCounterLimit = 20;
+				fireCounterLimit = 6;
 				ionColor = Colors::Green;
-				ionVelocity = 5;
+				ionVelocity = 10;
+				speederAmmo--;
 			}
 
 			// Making the fire rate turn back to normal after a while
-			if (speederRoundCounter % 19 == 0)
+			if (speederAmmo <= 0)
 			{
 				speeders[speederIndex].SetShipColission(false);
-				fireCounterLimit = 150;
+				fireCounterLimit = 90;
 				ionColor = Colors::Red;
-				ionVelocity = 2;
+				ionVelocity = 3;
 			}
 
 			// Spawning the speeder
-			if (speederRoundCounter % 13 == 0)
+			if ((speederRoundCounter % 20 == 0 || speederRoundCounter == 10) && speederAmmo <= 0)
 			{
 				speederIndex++;
 				speeders[speederIndex].Init(gfx.ScreenWidth, yDist(rng));
+				speederAmmo = 500;
 			}
 
 			// Checking if the existing rock is colliding with ship
@@ -178,10 +183,12 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
+	gfx.DrawSpace();
+
 	// Drawing all existing objects
 	if (gameStarted)
 	{
-		if (!speeders[speederIndex].GetShipColission() && speederIndex > -1)
+		if (!speeders[speederIndex].GetShipColission())
 		{
 			speeders[speederIndex].Draw(gfx);
 		}

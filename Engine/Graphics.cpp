@@ -3305,6 +3305,28 @@ void Graphics::DrawStartGame(int x, int y)
 
 }
 
+void Graphics::DrawSpace()
+{
+	for (int y = 25; y < ScreenHeight; y += 50)
+	{
+		for (int x = 0; x < ScreenWidth; x++)
+		{
+			if (x % 50 == solution)
+			{
+				PutPixel(x, y, 255, 255, 255);
+			}
+		}
+		if (solution == 25)
+		{
+			solution = 0;
+		}
+		else
+		{
+			solution = 25;
+		}
+	}
+}
+
 
 //////////////////////////////////////////////////
 //           Graphics Exception

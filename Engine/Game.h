@@ -47,19 +47,20 @@ private:
 	/*  User Variables              */
 	Ship ship;
 
-	Speeder speeders[1000];
-	int speederIndex = -1;
+	Speeder speeders[500];
+	int speederIndex = 0;
+	int speederAmmo = 0;
 
-	Rock rocks[1000];
+	Rock rocks[500];
 	int rockIndex = 0;
 
-	Ion ions[1000];
-	int ionIndex = -1;
+	Ion ions[500];
+	int ionIndex = 0;
 	Color ionColor = Colors::Red;
 	int ionVelocity = 2;
 
 	int fireCounter = 0;
-	int fireCounterLimit = 150;
+	int fireCounterLimit = 90;
 
 	std::random_device rd;
 	std::mt19937 rng;

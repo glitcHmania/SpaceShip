@@ -21,11 +21,11 @@ void Ship::ProcessMovement(const MainWindow& wnd, const Graphics& gfx)
 {
 	if (wnd.kbd.KeyIsPressed(VK_SPACE))
 	{
-		v = 1;
+		v =2;
 	}
 	else
 	{
-		v = 2;
+		v = 4;
 	}
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
@@ -35,31 +35,31 @@ void Ship::ProcessMovement(const MainWindow& wnd, const Graphics& gfx)
 	{
 		y = y + v;
 	}
-	//if (wnd.kbd.KeyIsPressed(VK_RIGHT))
-	//{
-	//	x = x + v;
-	//}
-	//if (wnd.kbd.KeyIsPressed(VK_LEFT))
-	//{
-	//	x = x - v;
-	//}
+	if (wnd.kbd.KeyIsPressed(VK_RIGHT))
+	{
+		x = x + v;
+	}
+	if (wnd.kbd.KeyIsPressed(VK_LEFT))
+	{
+		x = x - v;
+	}
 }
 
 void Ship::ClampScreen(const Graphics& gfx)
 {
-	if (y > gfx.ScreenHeight-height-10)
+	if (y >= gfx.ScreenHeight-height-10)
 	{
 		y = gfx.ScreenHeight-height-10;
 	}
-	if (y < 10)
+	if (y <= 10)
 	{
 		y = 10;
 	}
-	if (x > gfx.ScreenWidth - width - 10)
+	if (x >= gfx.ScreenWidth - width - 10)
 	{
 		x = gfx.ScreenWidth - width - 10;
 	}
-	if (x < 10)
+	if (x <= 10)
 	{
 		x = 10;
 	}

@@ -366,7 +366,7 @@ void Rock::Draw(Graphics& gfx)
 
 void Rock::Move()
 {
-	x-= 1;
+	x-= 2;
 }
 
 void Rock::ShipCollision(Ship& ship)

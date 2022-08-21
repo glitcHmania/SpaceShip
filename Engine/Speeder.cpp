@@ -162,7 +162,7 @@ void Speeder::Draw(Graphics& gfx)
 
 void Speeder::Move()
 {
-	x -= 2;
+	x -= 3;
 }
 
 void Speeder::ShipCollision(Ship& ship)
