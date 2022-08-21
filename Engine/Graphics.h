@@ -58,6 +58,8 @@ public:
 	}
 	void PutPixel( int x,int y,Color c );
 	void DrawShip(int x, int y);
+	void DrawGameOver(int x, int y);
+	void DrawStartGame(int x, int y);
 	~Graphics();
 private:
 	Microsoft::WRL::ComPtr<IDXGISwapChain>				pSwapChain;

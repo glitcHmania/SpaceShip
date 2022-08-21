@@ -23,8 +23,10 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Ion.h"
 #include "Ship.h"
-#include "Laser.h"
+#include <random>
+#include "Speeder.h"
 class Game
 {
 public:
@@ -44,9 +46,29 @@ private:
 	/********************************/
 	/*  User Variables              */
 	Ship ship;
-	Laser lasers[1000];
-	int laserIndex = -1;
+
+	Speeder speeders[1000];
+	int speederIndex = -1;
+
+	Rock rocks[1000];
+	int rockIndex = 0;
+
+	Ion ions[1000];
+	int ionIndex = -1;
+	Color ionColor = Colors::Red;
+	int ionVelocity = 2;
+
 	int fireCounter = 0;
-	int fireCounterLimit = 30;
+	int fireCounterLimit = 150;
+
+	std::random_device rd;
+	std::mt19937 rng;
+	std::uniform_int_distribution<int> xDist;
+	std::uniform_int_distribution<int> yDist;
+
+	bool gameOver = false;
+	bool gameStarted = false;
+
+	int speederRoundCounter = 1;
 	/********************************/
 };

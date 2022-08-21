@@ -60,7 +60,13 @@
     <ClInclude Include="Ship.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Laser.h">
+    <ClInclude Include="Rock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Speeder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -95,7 +101,13 @@
     <ClCompile Include="Ship.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Laser.cpp">
+    <ClCompile Include="Rock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Speeder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
