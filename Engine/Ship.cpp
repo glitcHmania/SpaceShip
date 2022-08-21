@@ -19,14 +19,17 @@ void Ship::Draw(Graphics& gfx)
 
 void Ship::ProcessMovement(const MainWindow& wnd, const Graphics& gfx)
 {
-	if (wnd.kbd.KeyIsPressed(VK_SPACE))
-	{
-		v =2;
-	}
-	else
-	{
-		v = 4;
-	}
+	//if (wnd.kbd.KeyIsPressed(VK_SPACE))
+	//{
+	//	vDiagonal = 1;
+	//	vStraight = 2;
+	//}
+	//else
+	//{
+	//	vDiagonal = 3;
+	//	vStraight = 4;
+	//}
+
 	if (wnd.kbd.KeyIsPressed(VK_UP))
 	{
 		y = y - v;
@@ -83,6 +86,21 @@ int Ship::GetWidth()
 int Ship::GetHeight()
 {
 	return height;
+}
+
+void Ship::fixSpeed(Keyboard& kbd)
+{
+	if ((kbd.KeyIsPressed(VK_DOWN) && kbd.KeyIsPressed(VK_RIGHT)) ||
+		(kbd.KeyIsPressed(VK_DOWN) && kbd.KeyIsPressed(VK_LEFT)) ||
+		(kbd.KeyIsPressed(VK_UP) && kbd.KeyIsPressed(VK_RIGHT)) ||
+		(kbd.KeyIsPressed(VK_UP) && kbd.KeyIsPressed(VK_LEFT)))
+	{
+		v = vDiagonal;
+	}
+	else
+	{
+		v = vStraight;
+	}
 }
 
 

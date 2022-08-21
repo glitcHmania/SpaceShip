@@ -13,6 +13,7 @@ public:
 	int GetY();
 	int GetWidth();
 	int GetHeight();
+	void fixSpeed(Keyboard& kbd);
 private:
 	bool hasFired = false;
 	int x;
@@ -20,6 +21,7 @@ private:
 	int width = 45;
 	int height = 44;
 	int v;
-	
+	int vDiagonal = 3;
+	int vStraight = 4;
 };
 

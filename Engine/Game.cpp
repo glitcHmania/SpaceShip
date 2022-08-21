@@ -66,6 +66,7 @@ void Game::UpdateModel()
 		if (!gameOver)
 		{
 			// Processing the movement of ship
+			ship.fixSpeed(wnd.kbd);
 			ship.ProcessMovement(wnd, gfx);
 
 			// Making the existing rock move left
