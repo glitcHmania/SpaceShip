@@ -3307,22 +3307,22 @@ void Graphics::DrawStartGame(int x, int y)
 
 void Graphics::DrawSpace()
 {
-	for (int y = 25; y < ScreenHeight; y += 50)
+	for (int y = 50; y < ScreenHeight; y += 100)
 	{
 		for (int x = 0; x < ScreenWidth; x++)
 		{
-			if (x % 50 == solution)
+			if (x % 100 == solution)
 			{
 				PutPixel(x, y, 255, 255, 255);
 			}
 		}
-		if (solution == 25)
+		if (solution == 50)
 		{
 			solution = 0;
 		}
 		else
 		{
-			solution = 25;
+			solution = 50;
 		}
 	}
 }
