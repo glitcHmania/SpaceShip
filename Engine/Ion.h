@@ -5,21 +5,21 @@
 class Ion
 {
 public:
-	void Init(int in_startX, int in_endX, int in_startY, int in_endY, Color in_color, int in_velocity);
-	void Fire(Graphics& gfx);
+	void Init(float in_startX, float in_endX, float in_startY, float in_endY, Color in_color, float in_velocity);
+	void Fire(Graphics& gfx, float deltaTime);
 	bool GetIsCharged();
 	void SetIsCharged(bool boolean);
 	bool GetIsColliding();
-	int GetStartX();
-	int GetStartY();
-	int GetEndY();
+	float GetStartX();
+	float GetStartY();
+	float GetEndY();
 private:
 	Color color = Colors::Red;
-	int startX;
-	int endX;
-	int startY;
-	int endY;
-	int velocity = 2;
+	float startX;
+	float endX;
+	float startY;
+	float endY;
+	float velocity = 300;
 	bool isCharged = false;
 	bool isColliding = false;
 };

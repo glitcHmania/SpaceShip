@@ -43,6 +43,9 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	// Calculating deltaTime
+	float deltaTime = ft.Mark();
+
 	// Checking if "Enter" is pressed
 	if (wnd.kbd.KeyIsPressed(VK_RETURN))
 	{
@@ -66,25 +69,25 @@ void Game::UpdateModel()
 		if (!gameOver)
 		{
 			// Processing the movement of ship
-			ship.fixSpeed(wnd.kbd);
-			ship.ProcessMovement(wnd, gfx);
+			ship.fixSpeed(wnd.kbd, 250);
+			ship.ProcessMovement(wnd, gfx, deltaTime);
 
 			// Making the existing rock move left
-			rocks[rockIndex].Move();
+			rocks[rockIndex].Move(200, deltaTime);
 
 			// Making the existing speeder move left
 			if (speederIndex != -1)
 			{
-				speeders[speederIndex].Move();
+				speeders[speederIndex].Move(200, deltaTime);
 			}
 
 			// Checking if the speeder is colliding with the ship
 			// and increasing the fire rate
 			if (speeders[speederIndex].GetShipColission() && speederAmmo > 0)
 			{
-				fireCounterLimit = 6;
+				fireCounterLimit = 3;
 				ionColor = Colors::Green;
-				ionVelocity = 10;
+				ionVelocity = 600;
 				speederAmmo--;
 			}
 
@@ -92,9 +95,9 @@ void Game::UpdateModel()
 			if (speederAmmo <= 0)
 			{
 				speeders[speederIndex].SetShipColission(false);
-				fireCounterLimit = 90;
+				fireCounterLimit = 50;
 				ionColor = Colors::Red;
-				ionVelocity = 3;
+				ionVelocity = 300;
 			}
 
 			// Spawning the speeder
@@ -147,7 +150,7 @@ void Game::UpdateModel()
 			{
 				if (ions[t].GetIsCharged())
 				{
-					ions[t].Fire(gfx);
+					ions[t].Fire(gfx, deltaTime);
 				}
 			}
 		}
@@ -194,6 +197,6 @@ void Game::ComposeFrame()
 			speeders[speederIndex].Draw(gfx);
 		}
 		rocks[rockIndex].Draw(gfx);
-		gfx.DrawShip(ship.GetX(), ship.GetY());
+		ship.Draw(gfx, ship.GetX(), ship.GetY());
 	}
 }

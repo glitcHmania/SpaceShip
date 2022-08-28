@@ -57,7 +57,6 @@ public:
 		PutPixel( x,y,{ unsigned char( r ),unsigned char( g ),unsigned char( b ) } );
 	}
 	void PutPixel( int x,int y,Color c );
-	void DrawShip(int x, int y);
 	void DrawGameOver(int x, int y);
 	void DrawStartGame(int x, int y);
 	void DrawSpace();

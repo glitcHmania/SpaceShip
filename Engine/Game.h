@@ -27,6 +27,8 @@
 #include "Ship.h"
 #include <random>
 #include "Speeder.h"
+#include "FrameTimer.h"
+
 class Game
 {
 public:
@@ -57,19 +59,21 @@ private:
 	Ion ions[500];
 	int ionIndex = 0;
 	Color ionColor = Colors::Red;
-	int ionVelocity = 2;
+	float ionVelocity = 300;
 
 	int fireCounter = 0;
 	int fireCounterLimit = 90;
 
 	std::random_device rd;
 	std::mt19937 rng;
-	std::uniform_int_distribution<int> xDist;
-	std::uniform_int_distribution<int> yDist;
+	std::uniform_real_distribution<float> xDist;
+	std::uniform_real_distribution<float> yDist;
 
 	bool gameOver = false;
 	bool gameStarted = false;
 
 	int speederRoundCounter = 1;
+
+	FrameTimer ft;
 	/********************************/
 };

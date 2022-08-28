@@ -6,22 +6,22 @@
 class Rock
 {
 public:
-	void Init(int in_x, int in_y);
+	void Init(float in_x, float in_y);
 	void Draw(Graphics& gfx);
-	void Move();
+	void Move(float v, float deltaTime);
 	void ShipCollision(Ship& ship);
 	bool GetIonRockCollision();
 	void SetIonRockCollision(bool boolean);
-	int GetX();
-	int GetY();
-	int GetWidth();
-	int GetHeight();
+	float GetX();
+	float GetY();
+	float GetWidth();
+	float GetHeight();
 	bool GetShipColission();
 private:
-	int x;
-	int y;
-	int width = 20;
-	int height = 20;
+	float x;
+	float y;
+	float width = 20;
+	float height = 20;
 	bool ionRockCollision = false;
 	bool shipCollision = false;
 };
