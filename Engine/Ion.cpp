@@ -1,6 +1,6 @@
 #include "Ion.h"
 
-void Ion::Init(int in_startX, int in_endX, int in_startY, int in_endY, Color in_color, int in_velocity)
+void Ion::Init(float in_startX, float in_endX, float in_startY, float in_endY, Color in_color, float in_velocity)
 {
 	startX = in_startX;
 	endX = in_endX;
@@ -10,21 +10,23 @@ void Ion::Init(int in_startX, int in_endX, int in_startY, int in_endY, Color in_
 	velocity = in_velocity;
 }
 
-void Ion::Fire(Graphics& gfx)
+void Ion::Fire(Graphics& gfx, float deltaTime)
 {
-	for (int i = startX; i < startX + 15; ++i)
+	for (float i = startX; i < startX + 15; ++i)
 	{
 
-		for (int j = startY; j < endY; ++j)
+		for (float j = startY; j < endY; ++j)
 		{
 			if (i < gfx.ScreenWidth)
 			{
-				gfx.PutPixel(i, j, color);
+				int i_int = int(i);
+				int j_int = int(j);
+				gfx.PutPixel(i_int, j_int, color);
 			}
 		}
 
 	}
-	startX += velocity;
+	startX += velocity * deltaTime;
 }
 
 bool Ion::GetIsCharged()
@@ -42,17 +44,17 @@ bool Ion::GetIsColliding()
 	return isColliding;
 }
 
-int Ion::GetStartX()
+float Ion::GetStartX()
 {
 	return startX;
 }
 
-int Ion::GetStartY()
+float Ion::GetStartY()
 {
 	return startY;
 }
 
-int Ion::GetEndY()
+float Ion::GetEndY()
 {
 	return endY;
 }

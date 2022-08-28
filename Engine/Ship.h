@@ -5,23 +5,21 @@
 class Ship
 {
 public:
-	Ship(int in_x,int in_y);
-	void Draw(Graphics& gfx);
-	void ProcessMovement(const MainWindow& wnd, const Graphics& gfx);
+	Ship(float in_x, float in_y);
+	void Draw(Graphics& gfx, float x, float y);
+	void ProcessMovement(const MainWindow& wnd, const Graphics& gfx, float deltaTime);
 	void ClampScreen(const Graphics& gfx);
-	int GetX();
-	int GetY();
-	int GetWidth();
-	int GetHeight();
-	void fixSpeed(Keyboard& kbd);
+	float GetX();
+	float GetY();
+	float GetWidth();
+	float GetHeight();
+	void fixSpeed(Keyboard& kbd, float new_v);
 private:
 	bool hasFired = false;
-	int x;
-	int y;
-	int width = 45;
-	int height = 44;
-	int v;
-	int vDiagonal = 3;
-	int vStraight = 4;
+	float x;
+	float y;
+	float width = 45;
+	float height = 44;
+	float v;
 };
 
